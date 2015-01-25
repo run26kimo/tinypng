@@ -16,8 +16,10 @@ module TinyPNG
       @params['output']
     end
 
-    def to_file
-      Tempfile.new(['tinypng', '.png']).tap do |file|
+    def to_file(full_path)
+
+      # Create a new file and write to it  
+      File.open(full_path, 'w') do |file|  
         begin
           image_response = TinyPNG::Client.get(output['url'])
         rescue => e
@@ -27,6 +29,7 @@ module TinyPNG
         file.write image_response
         file.rewind
       end
+
     end
   end
 end

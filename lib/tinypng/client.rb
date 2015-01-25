@@ -6,7 +6,7 @@ require 'tinypng/exception'
 module TinyPNG
   class Client
     include HTTParty
-    base_uri 'http://tinypng.org/api'
+    base_uri 'https://api.tinypng.com'
 
     def initialize api_key=ENV['TINY_PNG_KEY']
       @basic_auth = { username: 'api', password: api_key } if api_key
